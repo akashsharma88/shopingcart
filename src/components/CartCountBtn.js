@@ -8,7 +8,7 @@ export const CartCountBtn = ({ product }) => {
     const value = useSelector(cartValue(product.productId)) || 0
     if (!value)
         return (
-            <Button onClick={_ => dispatch(addToCart(product))}>Add to cart</Button>
+            <Button color="primary" variant="contained" size="large" onClick={_ => dispatch(addToCart(product))}>Add to cart</Button>
         )
 
     return (

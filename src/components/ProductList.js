@@ -24,7 +24,7 @@ export const ProductList = ({ search, page = 1, setPage, setCount, limit = 10 })
     }, [brand, category, search])
     return (
         <div>
-            <Grid container spacing={2}>
+            <Grid container spacing={1}>
                 {productData.slice((page - 1) * limit, page * limit).map(v =>
                     <Grid item xs={6} sm={6} md={4} lg={3} key={v.productId}>
                         <ProductItem data={v} />

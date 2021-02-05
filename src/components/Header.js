@@ -13,23 +13,26 @@ const useStyles = makeStyles((theme) => ({
     },
     title: {
         flexGrow: 1,
-        textDecoration:'none',
-        color:'white'
+        textDecoration: 'none',
+        color: 'white'
     },
 }));
 export const Header = () => {
     const classes = useStyles();
     return (
         <div>
-            <AppBar position="static">
+            <AppBar position="fixed">
                 <Toolbar>
                     <Link to="/" className={classes.title}>
                         <Typography variant="h6" >
-                            Alcowhiz products
+                            Shopping Cart
                     </Typography>
                     </Link>
 
-                    <CartButton onClick={_ => navigate('cart')} />
+                    <Link to="/" className={classes.title} style={{flexGrow:0}}>
+                        <Typography variant="h6" >Home</Typography>
+                    </Link>
+                    <CartButton onClick={_ => navigate('/cart')} />
                     {/* <IconButton edge="start"  className={classes.menuButton} color="inherit" aria-label="menu">
                         <CardTravelRounded />
                     </IconButton> */}

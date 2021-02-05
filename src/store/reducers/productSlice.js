@@ -9,5 +9,5 @@ export const productSlice = createSlice({
 });
 
 export const allProducts = state => state.product
-export const getProductById = id => state => state.product.filter(v => v.productId === id)
+export const getProductById = id => state => state.product.filter(v => v.productId ==id)[0]
 export default productSlice.reducer;

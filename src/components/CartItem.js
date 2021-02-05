@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { removeFromCart } from '../store/reducers/cartSlice';
 import { CartCountBtn } from './CartCountBtn';
 import { RUPEE } from '../utils'
+import { PriceComponent } from './PriceComponent';
 export const CartItem = ({ data }) => {
     const useStyles = makeStyles({
         root: {
@@ -12,21 +13,26 @@ export const CartItem = ({ data }) => {
     });
     const classes = useStyles();
     const dispatch = useDispatch()
-    console.log(data)
+
     return (
         <div style={{ flex: 1, width: '100%', padding: 10, display: 'flex' }}>
             <div style={{ flex: 0, padding: 5 }}>
-                <img src={data.productImage} style={{ height: 200, width: 200, objectFit: 'contain' }} />
+                <img src={data.productImage} style={{ height: 150, width: 150, objectFit: 'contain' }} />
             </div>
-            <div style={{ borderBottomWidth: 1, borderColor: 'lightgrey', flex: 1, display: 'flex' }}>
-                <div style={{ flex: 4 }}>
-                    <Typography variant="h4" component="h4">{data.productName}</Typography>
-                    <Typography variant="caption" component="strike" style={{ color: 'red' }}>{RUPEE}{parseFloat(data.productPrice).toFixed(2)}</Typography>
-                    <Typography variant="h5" component="h5">{RUPEE}{parseFloat(data.salePrice).toFixed(2)}</Typography>
+            <div style={{ borderBottomWidth: 5, borderColor: 'lightgrey', flex: 1, display: 'flex' }}>
+                <div style={{ flex: 5, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                    <div >
+                        <Typography variant="h5" component="h5">{data.productName}</Typography>
+                        <PriceComponent productPrice={data.productPrice} salePrice={data.salePrice} />
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'flex-end' }}>
+                        <CartCountBtn product={data} />
+
+                    </div>
                 </div>
-                <div style={{ flex: 2 }}>
-                    <Typography variant="body1">{RUPEE}{parseFloat(data.salePrice).toFixed(2) * data.quantity}</Typography>
-                    <CartCountBtn product={data} />
+                <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
+                    <Typography variant="h5" component="h5">{RUPEE}{parseFloat(data.salePrice).toFixed(2) * data.quantity}</Typography>
+
                     <IconButton onClick={() => dispatch(removeFromCart(data.productId))}>
                         <Close />
                     </IconButton>

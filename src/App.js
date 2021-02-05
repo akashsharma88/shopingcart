@@ -8,7 +8,7 @@ function App() {
   return (
     <Router>
       <Home path="/" />
-      <Product path="products" />
+      <Product path="product/:productId" />
       <Cart path="cart" />
     </Router>
 

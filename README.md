@@ -1,6 +1,8 @@
-# Getting Started with Create React App
+# Shopping cart
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project provide demo of shopping cart in reactjs redux + redux-toolkit
+# For live demo
+https://shopping-cart-feafb.web.app
 
 ## Available Scripts
 

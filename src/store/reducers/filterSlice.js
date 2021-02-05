@@ -12,11 +12,11 @@ export const filterSlice = createSlice({
         removeFromCategory: (state, { payload }) => {
             return { ...state, category: state.category.filter(s => s !== payload) }
         },
-
+        clearFilter: (state, { payload }) => state = { brand: [], category: [] }
     },
 });
 
 export const selectedBrand = state => state.filter.brand
 export const selectedCategory = state => state.filter.category
-export const { addBrand, addCategory, removeFromBrand, removeFromCategory } = filterSlice.actions;
+export const { addBrand, addCategory, removeFromBrand, removeFromCategory, clearFilter } = filterSlice.actions;
 export default filterSlice.reducer;

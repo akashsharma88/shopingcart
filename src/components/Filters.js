@@ -1,7 +1,7 @@
 import brands from '../data/brands.json';
 import category from '../data/category.json';
 import React, { useState, useEffect } from 'react'
-import { Typography } from '@material-ui/core';
+import { List, ListItem, Typography } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -38,31 +38,39 @@ export const Filters = () => {
     return (
         <div>
             <Typography>BRANDS</Typography>
-            {brands.map((v, i) => <FormControlLabel
-                key={`brands-${i}`}
-                control={
-                    <Checkbox
-                        checked={selectBrand.includes(v)}
-                        onChange={_handleBrandChange(v)}
-                        name="brand"
-                        color="primary"
-                    />
-                }
-                label={v}
-            />)}
+            <List dense>
+                {brands.map((v, i) => <ListItem key={`brands-${i}`}>
+                    <FormControlLabel
+                        control={
+                            <Checkbox
+                                checked={selectBrand.includes(v)}
+                                onChange={_handleBrandChange(v)}
+                                name="brand"
+                                color="primary"
+                            />
+                        }
+                        label={v}
+                    /></ListItem>)}
+            </List>
             <Typography>CATEGORY</Typography>
-            {category.map((v, i) => <FormControlLabel
-                key={`category-${i}`}
-                control={
-                    <Checkbox
-                        checked={selectCategory.includes(v)}
-                        onChange={_handleCategoryChange(v)}
-                        name="category"
-                        color="primary"
+            <List dense>
+                {category.map((v, i) => <ListItem
+                    key={`category-${i}`}>
+                    <FormControlLabel
+                        control={
+                            <Checkbox
+                                checked={selectCategory.includes(v)}
+                                onChange={_handleCategoryChange(v)}
+                                name="category"
+                                color="primary"
+                            />
+                        }
+                        label={v}
                     />
-                }
-                label={v}
-            />)}
+                </ListItem>)}
+
+            </List>
+
         </div>
     )
 }
